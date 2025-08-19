@@ -1,63 +1,54 @@
-# SafeHaven Security - Multi-Brand MVP
+# SafeHaven Security - Multi-Brand Platform
 
-A scalable, mobile-first security website platform supporting multiple brands with shared components and dynamic routing.
+A scalable, mobile-first web application built for SafeHaven Security's multi-brand requirements. This implementation demonstrates a service-oriented architecture that supports multiple security brands across different states with shared components and brand-specific customization.
 
-## Quick Start
+## Project Overview
 
-### Option 1: Docker (Recommended)
+This application simulates SafeHaven Security's business model, operating four distinct brands across the Southeast US:
+- SafeHaven Security (NC, SC, TN) 
+- TopSecurity (GA)
+- BestSecurity (FL)  
+- RedHawk Alarms (AL)
+
+Each brand maintains unique styling, contact information, and localized content while sharing the underlying platform architecture.
+
+## Development Setup
+
+**Docker (Recommended):**
 ```bash
-# Start with hot reloading and network access
 docker compose up --build
-
-# Access the app
-# Local: http://localhost:3000
-# Network: http://[your-ip]:3000
+# Access at http://localhost:3000
 ```
 
-### Option 2: Local Development
+**Local Development:**
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
-
-# Open http://localhost:3000
+# Access at http://localhost:3000
 ```
 
-## Multi-Brand URLs
-- **SafeHaven** (default): http://localhost:3000
-- **TopSecurity**: http://localhost:3000/topsecurity  
-- **BestSecurity**: http://localhost:3000/bestsecurity
-- **RedHawk Alarms**: http://localhost:3000/redhawk
+## Brand Routes
+- SafeHaven (Default): `http://localhost:3000`
+- TopSecurity: `http://localhost:3000/topsecurity` 
+- BestSecurity: `http://localhost:3000/bestsecurity`
+- RedHawk Alarms: `http://localhost:3000/redhawk`
 
-## UTM Tracking Example
-```
-http://localhost:3000?source=google
-```
-Dynamic phone numbers change based on UTM source parameter.
+## Core Features
 
-## Features
-- ✅ Progressive 3-step lead form with persistence
-- ✅ ZIP-based brand routing  
-- ✅ Dynamic phone number insertion
-- ✅ Analytics tracking (GA4 dataLayer)
-- ✅ Mobile-first responsive design
-- ✅ Docker development environment
+**Progressive Lead Form**: Multi-step form with real-time validation, automatic phone formatting, and localStorage persistence for return visitors.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Location-Based Routing**: Geolocation detection automatically suggests appropriate brand based on user's ZIP code area.
 
-## Learn More
+**UTM Parameter Tracking**: Dynamic phone number insertion based on traffic source (e.g., `?source=google` displays campaign-specific contact numbers).
 
-To learn more about Next.js, take a look at the following resources:
+**AI-Powered Chat**: Contextual lead assistance with brand-aware responses and direct integration to contact workflows.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**External API Integration**: Google Maps address autocomplete and weather-based localized content.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technical Implementation
 
-## Deploy on Vercel
+The application uses a service-oriented architecture where business logic is abstracted into reusable service classes, with React components serving as lightweight UI controllers. This pattern enables easy brand addition and centralized feature updates across all brand instances.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Brand-specific customization is handled through configuration-driven theming and content management, allowing for scalable multi-tenant operations without code duplication.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Complete technical documentation and architectural decisions are detailed in `ARCHITECTURE.md`.

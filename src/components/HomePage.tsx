@@ -5,6 +5,11 @@ import LeadForm from './LeadForm'
 import ZipRouter from './ZipRouter'
 import LocationToolbar from './LocationToolbar'
 import LocationPermissionBanner from './LocationPermissionBanner'
+import TestimonialsSection from './TestimonialsSection'
+import ArticlesSection from './ArticlesSection'
+import LocalFeaturesSection from './LocalFeaturesSection'
+import AIChat from './AIChat'
+import Footer from './Footer'
 import { Shield, Phone, MapPin } from 'lucide-react'
 
 export default function HomePage() {
@@ -106,6 +111,21 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Local Features with Weather */}
+      <LocalFeaturesSection />
+
+      {/* Articles Section */}
+      <ArticlesSection />
+
+      {/* AI Chat */}
+      <AIChat />
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
