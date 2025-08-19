@@ -1,18 +1,24 @@
-# Development Dockerfile for Next.js with hot reloading
+# Production Dockerfile for Next.js
 FROM node:22-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Install dependencies first (better caching)
+# Install dependencies (including dev deps for build)
 COPY package*.json ./
 RUN npm ci
 
 # Copy source code
 COPY . .
 
+# Build the application
+RUN npm run build
+
+# Remove dev dependencies after build
+RUN npm ci --only=production && npm cache clean --force
+
 # Expose port
 EXPOSE 3000
 
-# Start development server with hot reloading
-CMD ["npm", "run", "dev"]
+# Start production server
+CMD ["npm", "start"]
